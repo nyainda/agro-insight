@@ -195,29 +195,35 @@ export function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-green-500/10 dark:from-emerald-500/5 dark:to-green-500/5" />
+      <section className="relative py-20 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-green-500/10 to-blue-500/20 dark:from-emerald-500/10 dark:via-green-500/5 dark:to-blue-500/10" />
+        
+        {/* Animated Background Elements */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-300/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-300/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-blue-300/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center max-w-5xl mx-auto">
+          <div className="text-center max-w-6xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <Badge variant="secondary" className="mb-6 bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300">
-                <Sparkles className="h-4 w-4 mr-2" />
-                AI-Powered Farm Intelligence
+              <Badge variant="secondary" className="mb-8 bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 dark:bg-gradient-to-r dark:from-emerald-950/50 dark:to-green-950/50 dark:text-emerald-300 px-6 py-2 text-lg">
+                <Sparkles className="h-5 w-5 mr-2" />
+                AI-Powered Farm Intelligence Platform
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+              <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-8 leading-tight">
                 The Future of{' '}
-                <span className="bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-blue-600 bg-clip-text text-transparent">
                   Smart Farming
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-2xl text-gray-600 dark:text-gray-400 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
                 Transform your agricultural operations with AgroInsight's enterprise-grade platform. 
-                AI-powered insights, predictive analytics, and comprehensive livestock management 
-                that scales with your farm.
+                Experience AI-powered insights, predictive analytics, and comprehensive livestock management 
+                that revolutionizes farming productivity.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button size="lg" onClick={() => openAuth('register')} className="text-lg px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700">
@@ -273,20 +279,31 @@ export function LandingPage() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.15, duration: 0.6 }}
+                whileHover={{ y: -10 }}
               >
-                <Card className="h-full hover:shadow-xl transition-all duration-300 border-emerald-100 dark:border-emerald-800/50 group">
-                  <CardHeader>
-                    <div className={`${feature.bgColor} ${feature.color} p-4 rounded-xl w-fit mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <feature.icon className="h-7 w-7" />
+                <Card className="h-full hover:shadow-2xl transition-all duration-500 border-emerald-100 dark:border-emerald-800/50 group relative overflow-hidden bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50">
+                  {/* Animated background gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <CardHeader className="relative z-10">
+                    <div className={`${feature.bgColor} ${feature.color} p-5 rounded-2xl w-fit mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
+                      <feature.icon className="h-8 w-8" />
                     </div>
-                    <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
+                    <CardTitle className="text-2xl mb-3 group-hover:text-emerald-600 transition-colors duration-300">{feature.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
+                  <CardContent className="relative z-10">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">{feature.description}</p>
+                    <div className="mt-6 flex items-center text-emerald-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span>Learn more</span>
+                      <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </CardContent>
+                  
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </Card>
               </motion.div>
             ))}
