@@ -341,7 +341,7 @@ const sampleStaff: StaffMember[] = [
   },
 ];
 
-export const useData = create<DataState>()(
+export const useDataStore = create<DataState>()(
   persist(
     (set, get) => ({
       animals: sampleAnimals,
@@ -719,7 +719,7 @@ export const useData = create<DataState>()(
 
 // Create a hook that returns filtered data for the current user's farm
 export const useData = () => {
-  const store = useData();
+  const store = useDataStore();
   const farmId = getCurrentFarmId();
   
   return {

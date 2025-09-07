@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
 import { Heart, Activity, AlertTriangle, CheckCircle, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useFarmAnimals } from '@/lib/data';
+import { useData } from '@/lib/data';
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -29,7 +29,7 @@ const getStatusIcon = (status: string) => {
 };
 
 export function AnimalHealthOverview() {
-  const animals = useFarmAnimals();
+  const { animals } = useData();
 
   // Show first 4 animals for the overview
   const displayAnimals = animals.slice(0, 4);
